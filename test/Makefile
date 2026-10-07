@@ -72,3 +72,11 @@ endif
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
+
+# make RB=yes: Receipt Builder karya tim
+ifeq ($(RB),yes)
+VERILOG_SOURCES = $(SRC_DIR)/receipt_builder.v
+TOPLEVEL = receipt_builder
+MODULE = test_receipt
+SIM_BUILD = sim_build/rb
+endif
