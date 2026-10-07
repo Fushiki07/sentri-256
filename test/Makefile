@@ -62,5 +62,13 @@ MODULE = test_hmac_avmm
 SIM_BUILD = sim_build/avmm
 endif
 
+# make KG=yes: Key Guard karya tim (key_guard.v, test_key_guard.py)
+ifeq ($(KG),yes)
+VERILOG_SOURCES = $(SRC_DIR)/key_guard.v
+TOPLEVEL = key_guard
+MODULE = test_key_guard
+SIM_BUILD = sim_build/kg
+endif
+
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
