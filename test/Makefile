@@ -77,4 +77,12 @@ MODULE = test_receipt
 SIM_BUILD = sim_build/rb
 endif
 # include cocotb's make rules to take care of the simulator setup
+# make ST1=yes: jalur hash dokumen sentri_top v2 (cabang int-sha)
+ifeq ($(ST1),yes)
+VERILOG_SOURCES = $(SRC_DIR)/sentri_top.v $(SRC_DIR)/doc_hash_ctrl.v $(SRC_DIR)/sha07_block.v $(SRC_DIR)/project.v $(SRC_DIR)/key_guard.v $(SRC_DIR)/receipt_builder.v $(SRC_DIR)/hmac_avmm.v $(SRC_DIR)/hmac_ctrl.v
+TOPLEVEL = sentri_top
+MODULE = test_sentri_hash
+SIM_BUILD = sim_build/st1
+endif
+
 include $(shell cocotb-config --makefiles)/Makefile.sim
